@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap demo</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+<body style="background-color: #f2f2f2;">
+   
+   <!-- navbar start -->
+   <nav th:replace="userhome::navUser(${custName})"></nav>
+   <!-- navbar end -->
+   
+   <div class="container-fluid bg-dark text-white ">
+      <div class="container">
+          <div class="row align-items-center" style="height: 100px;">
+             <h3 th:text="${movies}+' - '+${mov}" class="col-md-12"></h3>
+          </div>
+      </div>
+   </div>
+   
+   <div class="container-fluid bg-white">
+      <div class="container">
+       <form th:action="@{'/userhome/seatlayout/'+${movieId}}" method="post">
+         <div class="row align-items-center" style="height: 80px;">
+            <div class="col-md-2 ">
+                    <select name="date">
+                        <option th:value="${todayDate}" ><span th:text="${todayDate}"></span></option>
+                    </select>
+                    
+            </div>
+            <div class="col-md-1 ">
+                <a th:href="@{'/userhome/'+${movieId}}+'/tomarrow'"><i class="bi bi-chevron-right" style="font-size: 30px; color: cornflowerblue;"></i></a>
+            </div>
+         </div>
+         <div class="row align-items-center mt-3" style="height: 100px;">
+            <div class="container">
+               <div class="row align-items-center">
+                  <div class="col-md-2" th:if="${hour < 9}">
+                     <button type="submit" class="btn btn-primary" value="9 am" name="time" th:style="${movi.timeOne == null}?'display:none':''"><span th:text=${movi.timeOne}></span></button>
+                  </div>
+                  <div class="col-md-2" th:if="${hour < 11}">
+                     <button type="submit" class="btn btn-primary" value="11 am" name="time" th:style="${movi.timeTwo == null}?'display:none':''"><span th:text=${movi.timeTwo}></span></button>
+                  </div>
+                  <div class="col-md-2"  th:if="${hour < 13}">
+                     <button type="submit" class="btn btn-primary" value="1 pm" name="time" th:style="${movi.timeThree == null}?'display:none':''"><span th:text=${movi.timeThree}></span></button>
+                  </div>
+                  <div class="col-md-2" th:if="${hour < 16.30}" >
+                     <button type="submit" class="btn btn-primary" value="4.30 pm" name="time" th:style="${movi.timeFour == null}?'display:none':''"><span th:text=${movi.timeFour}></span></button>
+                  </div>
+                  <div class="col-md-2" th:if="${hour < 21.30}">
+                     <button type="submit" class="btn btn-primary" value="9.30 pm" name="time" th:style="${movi.timeFive == null}?'display:none':''"><span th:text=${movi.timeFive}></span></button>
+                  </div>
+                  <div class="col-md-2" th:if="${hour < 23}" >
+                     <button type="submit" class="btn btn-primary" value="11 pm" name="time" th:style="${movi.timeSix == null}?'display:none':''"><span th:text=${movi.timeSix}></span></button>
+                  </div>
+               </div>
+            </div>
+         </div>
+       </form>  
+      </div>
+   </div>
+   
+   
+
+<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

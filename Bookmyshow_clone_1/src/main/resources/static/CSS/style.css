@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+body{
+	box-sizing: border-box;
+}
+.seat{
+	font-size: 13px;
+	font-weight: 600;
+	width: 50px;
+	height: 35px;
+	border-radius: 5px;
+	border: 1px solid green;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.seat:not(.occupied):hover{
+	background-color: green;
+	cursor: pointer;
+	transform:scale(1.1);
+}
+
+.selected{
+	background-color: green;
+}
+.occupied{
+	background-color: gray;
+	border: 1px solid black;
+	cursor: progress;
+}
+.hidden{
+	display: none;
+}
+.show{
+	display: block;
+}

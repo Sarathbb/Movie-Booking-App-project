@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap demo</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<style type="text/css">
+a{
+   text-decoration: none;
+}
+</style>
+</head>
+<body style="background-color: #f2f2f2;">
+
+	<nav th:replace="adminhome::nav1('Administrator')"></nav>
+
+	<div class="container" >
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<h1 class="text-center">View <span th:text="${name}" style="font-style: italic;"></span> Booking History</h1>
+			</div>
+
+			<table class="table table-primary table-striped" >
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Movie Name</th>
+						<th scope="col">Booking Date</th>
+						<th scope="col">Show Date</th>
+						<th scope="col">Show Time</th>
+						<th scope="col">Ticket No</th>
+						<th scope="col">Total Price</th>
+						<th><a class="btn btn-primary" th:href="@{/adminhome/viewcustomers}">Back To Customers List</a></th>
+					</tr>
+				</thead>
+				<tbody th:each="c:${bookings}">
+					<tr>
+						<th scope="row" th:text=${c.bookingID}></th>
+						<td th:text="${c.movieName}"></td>
+						<td th:text="${c.bookingDate}"></td>
+						<td th:text="${c.movieDate}"></td>
+						<td th:text="${c.movieTime}"></td>
+						<td th:text="${c.seatNo}"></td>
+						<td th:text="${c.totalPrice}"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+</body>
+</html>
